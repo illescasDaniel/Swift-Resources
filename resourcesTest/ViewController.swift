@@ -19,15 +19,15 @@ class ViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-//		imageView1.image = R.Image.avatar
-//		imageView2.image = R.Image.someImages_i_codeCopy
-//		imageView3.image = R.Image.someImages_kickstarter2
-//		imageView4.image = R.Image.kickstarterEdiary
-//		
-//		view1.backgroundColor = R.Color.accentColor
-//		view2.backgroundColor = R.Color.someImages_color
-//		
-//		R.checkResources()
+		imageView1.image = R.Image.avatar
+		imageView2.image = R.Image.someImages_i_codeCopy
+		imageView3.image = R.Image.someImages_kickstarter2
+		imageView4.image = R.Image.kickstarterEdiary
+		
+		view1.backgroundColor = R.Color.accentColor
+		view2.backgroundColor = R.Color.someImages_color
+		
+		R.checkResources()
 	}
 
 
