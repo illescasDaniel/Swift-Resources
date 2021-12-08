@@ -51,7 +51,7 @@ enum R {
 **Please follow all the following steps to know how it works and have all the necessary files set up.**
 
 ## 1/3 What's needed:
-1. You need python 3 installed and you should have an alias/symbolic link to the binary named "python3".
+1. You need python 3 installed and you should have an alias/symbolic link to the binary with the name "python3".
 2. You will also need the `gyb.py` program made by Apple developers. 
 	- Official file link: https://github.com/apple/swift/blob/main/utils/gyb.py
 	- Some unofficial documentation and tutorials: https://nshipster.com/swift-gyb/
@@ -60,12 +60,12 @@ enum R {
 
 1. Put `gyb.py` in the root folder of the project, the structure should be:
 ```
-	├── README.md
-	├── __init__.py			# necessay file to easily use gyb_resources.py
-	├── gyb.py				# apple's gyb
-	├── gyb_resources.py	# python script to generate code
-	├── gyb_script.py		# script for Xcode
-	├── resourcesTest		# project folder name
+├── README.md
+├── __init__.py         # necessay file to easily use gyb_resources.py
+├── gyb.py              # apple's gyb
+├── gyb_resources.py    # python script to generate code
+├── gyb_script.py       # script for Xcode
+├── resourcesTest       # project folder name
 ```
 
 2. Build and run the project. 
@@ -87,10 +87,10 @@ view1.backgroundColor = R.Color.accentColor
 
 1. You need to copy these files to the root folder of your project:
 ```
-	├── __init__.py
-	├── gyb.py
-	├── gyb_resources.py
-	├── gyb_script.py
+├── __init__.py
+├── gyb.py
+├── gyb_resources.py
+├── gyb_script.py
 ```
 
 2. Change the variable `project_name` inside `gyb_script.py` to your project folder name.
@@ -103,7 +103,15 @@ python3 $PROJECT_DIR/gyb_script.py
 ```
 Run script: uncheck "for install builds only" and "based on dependendy analysis"
 
-5. You should be able to compile your project and a new file named `R.swift` should be generated alongside `R.swift.gyb`, drag `R.swift` to the project adding it to the proper target/s. `R.swift` should be treated as any other swift file (it should be compiled) BUT you should not modify it manually, since that file will change depending on your assets.
+5. **IMPORTANT** drag up this script build phase so that it appears BEFORE `Compile Sources`. Example:
+```
+- Dependencies
+- GYB # your script created in step 4, you can rename it
+- Compile Sources
+- ...
+```
+
+6. You should be able to compile your project. After this a new file named `R.swift` should be generated alongside `R.swift.gyb`, drag `R.swift` to the project adding it to the proper target/s. `R.swift` should be treated as any other swift file (it should be compiled) BUT you should not modify it manually, since that file will change depending on your assets.
 
 ## Limitations / notes
 - Try not to use weird asset names (this is handled properly but just in case).
