@@ -8,40 +8,40 @@ import UIKit
 
 enum R {
 
-	enum Image {
-		static var `avatar`: UIImage { UIImage(named: "avatar")! }
-		static var `someImages_kickstarter2`: UIImage { UIImage(named: "some images/kickstarter-2")! }
-		static var all: [UIImage] {[
-			`avatar`,
-			`someImages_kickstarter2`,
-		]}
-	}
+    enum Image {
+        static var `avatar`: UIImage { UIImage(named: "avatar")! }
+        static var `someImages_kickstarter2`: UIImage { UIImage(named: "some images/kickstarter-2")! }
+        static var all: [UIImage] {[
+            `avatar`,
+            `someImages_kickstarter2`,
+        ]}
+    }
 
-	enum Color {
-		static var `accentColor`: UIColor { UIColor(named: "AccentColor")! }
-		static var `eightSomething`: UIColor { UIColor(named: "8something")! }
-		static var all: [UIColor] {[
-			`accentColor`,
-			`eightSomething`,
-		]}
-	}
+    enum Color {
+        static var `accentColor`: UIColor { UIColor(named: "AccentColor")! }
+        static var `eightSomething`: UIColor { UIColor(named: "8something")! }
+        static var all: [UIColor] {[
+            `accentColor`,
+            `eightSomething`,
+        ]}
+    }
 
-	static var all: [Any] {[
-		R.Image.`avatar`,
-		R.Image.`someImages_kickstarter2`,
-		R.Color.`accentColor`,
-		R.Color.`eightSomething`,
-	]}
+    static var all: [Any] {[
+        R.Image.`avatar`,
+        R.Image.`someImages_kickstarter2`,
+        R.Color.`accentColor`,
+        R.Color.`eightSomething`,
+    ]}
 
-	static func checkResources(shouldPrint: Bool = true) {
-		R.all.forEach { resource in
-			if shouldPrint {
-				print("Asset available: \(resource)")
-			} else {
-				_ = resource
-			}
-		}
-	}
+    static func checkResources(shouldPrint: Bool = true) {
+        R.all.forEach { resource in
+            if shouldPrint {
+                print("Asset available: \(resource)")
+            } else {
+                _ = resource
+            }
+        }
+    }
 }
 
 ```
