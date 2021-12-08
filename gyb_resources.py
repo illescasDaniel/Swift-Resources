@@ -56,7 +56,7 @@ def _clean_asset_name(name):
 	camel_case_name = _camelCase(name)
 	cleaned_asset_name_1 = re.sub(r"[^a-zA-Z0-9_]", "_", camel_case_name)
 	numbers_replaced = re.sub(r"(^[0-9]+)([a-z]?)", lambda m: _number_to_word(m.group(1))+m.group(2).upper(), cleaned_asset_name_1)
-	return "`{}`".format(numbers_replaced)
+	return f"`{numbers_replaced}`"
 
 def _should_preserve_namespace(full_file_path_arg):
 	with open(full_file_path_arg) as f:
@@ -74,7 +74,7 @@ class _DirType:
 def _resources(parent_directory, type):
 
 	if type != _DirType.IMAGE and type != _DirType.COLOR:
-		raise Exception("Invalid type {}".format(type))
+		raise Exception(f"Invalid type {type}")
 
 	contents_json_file_name = "Contents.json"
 	image_folder_suffix = ".imageset"
@@ -98,7 +98,7 @@ def _resources(parent_directory, type):
 				resources.append(Resource(resource_folder_name_without_suffix, _clean_asset_name(resource_folder_name_without_suffix)))
 			else:
 				resource_name = resource_folder_name_without_suffix
-				full_resource_name = _resource_name_without_suffix(full_file_path, resource_folder_suffix)[len("{}/".format(_assets_folder_name)):]
+				full_resource_name = _resource_name_without_suffix(full_file_path, resource_folder_suffix)[len(f"{_assets_folder_name}/"):]
 				preserve_namespace = _should_preserve_namespace(os.path.join(parent_directory, contents_json_file_name))
 				if preserve_namespace:
 					resource_name = full_resource_name
