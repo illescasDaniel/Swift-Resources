@@ -13,6 +13,7 @@
 		65019A272760C725006196F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65019A252760C725006196F0 /* Main.storyboard */; };
 		65019A292760C726006196F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65019A282760C726006196F0 /* Assets.xcassets */; };
 		65019A2C2760C726006196F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65019A2A2760C726006196F0 /* LaunchScreen.storyboard */; };
+		657365232760D553008ADAA5 /* R.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657365222760D553008ADAA5 /* R.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,8 @@
 		65019A282760C726006196F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		65019A2B2760C726006196F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		65019A2D2760C726006196F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		65019A332760C7C5006196F0 /* R.swift.gyb */ = {isa = PBXFileReference; lastKnownFileType = text; path = R.swift.gyb; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		657365222760D553008ADAA5 /* R.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +59,8 @@
 		65019A1E2760C725006196F0 /* resourcesTest */ = {
 			isa = PBXGroup;
 			children = (
+				65019A332760C7C5006196F0 /* R.swift.gyb */,
+				657365222760D553008ADAA5 /* R.swift */,
 				65019A1F2760C725006196F0 /* AppDelegate.swift */,
 				65019A212760C725006196F0 /* SceneDelegate.swift */,
 				65019A232760C725006196F0 /* ViewController.swift */,
@@ -74,6 +79,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 65019A302760C726006196F0 /* Build configuration list for PBXNativeTarget "resourcesTest" */;
 			buildPhases = (
+				65019A352760CA7F006196F0 /* GYB */,
 				65019A182760C725006196F0 /* Sources */,
 				65019A192760C725006196F0 /* Frameworks */,
 				65019A1A2760C725006196F0 /* Resources */,
@@ -133,11 +139,34 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		65019A352760CA7F006196F0 /* GYB */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = GYB;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "python3 $PROJECT_DIR/gyb_script.py\n\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		65019A182760C725006196F0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				657365232760D553008ADAA5 /* R.swift in Sources */,
 				65019A242760C725006196F0 /* ViewController.swift in Sources */,
 				65019A202760C725006196F0 /* AppDelegate.swift in Sources */,
 				65019A222760C725006196F0 /* SceneDelegate.swift in Sources */,

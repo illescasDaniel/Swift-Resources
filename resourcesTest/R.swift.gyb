@@ -1,0 +1,63 @@
+//
+//  R.swift
+//  resourcesTest
+//
+//  Created by Daniel Illescas Romero on 8/12/21.
+//
+
+%{
+from gyb_resources import image_resources
+from gyb_resources import color_resources
+}%
+
+import UIKit
+
+enum R {
+
+	enum Image {
+		%{
+		r_image_resources = image_resources()
+		}%
+		% for resource in r_image_resources:
+		static var ${resource.variableName}: UIImage { UIImage(named: "${resource.name}")! }
+		% end
+		static var all: [UIImage] {[
+		% for resource in r_image_resources:
+			${resource.variableName},
+		% end
+		]}
+	}
+
+	enum Color {
+		%{
+		r_color_resources = color_resources()
+		}%
+		% for resource in r_color_resources:
+		static var ${resource.variableName}: UIColor { UIColor(named: "${resource.name}")! }
+		% end
+		static var all: [UIColor] {[
+		% for resource in r_color_resources:
+			${resource.variableName},
+		% end
+		]}
+	}
+
+	static var all: [Any] {[
+	% for resource in r_image_resources:
+		R.Image.${resource.variableName},
+	% end
+	% for resource in r_color_resources:
+		R.Color.${resource.variableName},
+	% end
+	]}
+
+	static func checkResources(shouldPrint: Bool = true) {
+		R.all.forEach { resource in
+			if shouldPrint {
+				print("Asset available: \(resource)")
+			} else {
+				_ = resource
+			}
+		}
+	}
+}
