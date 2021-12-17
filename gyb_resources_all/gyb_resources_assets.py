@@ -1,15 +1,17 @@
 import os
 import re
 import json
+from gyb_resources_common import _camelCase
+from gyb_resources_common import _number_to_word
 
 _assets_folder_name = "Assets.xcassets"
 
 # Public:
 
 class Resource:
-	def __init__(self, name, variableName):
+	def __init__(self, name, variable_name):
 		self.name = name
-		self.variableName = variableName
+		self.variable_name = variable_name
 
 def image_resources(parent_directory = _assets_folder_name):
 	return _resources(parent_directory, _DirType.IMAGE)
@@ -19,38 +21,8 @@ def color_resources(parent_directory = _assets_folder_name):
 
 # Private:
 
-_number_to_word_dictionary = {
-	0: 'zero', 1: 'one', 2: 'two', 3: 'three', 4: 'four', 5: 'five',
-	6: 'six', 7: 'seven', 8: 'eight', 9: 'nine', 10: 'ten',
-	11: 'eleven', 12: 'twelve', 13: 'thirteen', 14: 'fourteen',
-	15: 'fifteen', 16: 'sixteen', 17: 'seventeen', 18: 'eighteen',
-	19: 'nineteen', 20: 'twenty', 30: 'thirty', 40: 'forty',
-	50: 'fifty', 60: 'sixty', 70: 'seventy', 80: 'eighty',
-	90: 'ninety', 100: 'oneHundred', 1000: 'oneThousand'
-}
-
-def _number_to_word(number_string):
-	try:
-		number = int(number_string)
-		return _number_to_word_dictionary[number]
-	except:
-		return "_"
-
-def _decapitalize(s):
-	if not s:  # check that s is not empty string
-		return s
-	return s[0].lower() + s[1:]
-
 def _resource_name_without_suffix(file_path, suffix):
 	return file_path[:len(file_path)-len(suffix)]
-
-def _camelCase(text):
-	decapitalized_text = _decapitalize(text)
-	split_words = decapitalized_text.replace("-", " ").replace("_", " ").split(" ")
-	if len(split_words) == 1:
-		return decapitalized_text
-	x = map(lambda str: str.capitalize(), split_words[1:])
-	return split_words[0].lower() + "".join(x)
 		
 def _clean_asset_name(name):
 	camel_case_name = _camelCase(name)

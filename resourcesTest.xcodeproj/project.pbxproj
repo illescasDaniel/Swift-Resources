@@ -13,6 +13,7 @@
 		65019A272760C725006196F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65019A252760C725006196F0 /* Main.storyboard */; };
 		65019A292760C726006196F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65019A282760C726006196F0 /* Assets.xcassets */; };
 		65019A2C2760C726006196F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65019A2A2760C726006196F0 /* LaunchScreen.storyboard */; };
+		65372FFC276D0B0500919088 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 65372FFE276D0B0500919088 /* Localizable.strings */; };
 		657365232760D553008ADAA5 /* R.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657365222760D553008ADAA5 /* R.swift */; };
 /* End PBXBuildFile section */
 
@@ -26,6 +27,7 @@
 		65019A2B2760C726006196F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		65019A2D2760C726006196F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		65019A332760C7C5006196F0 /* R.swift.gyb */ = {isa = PBXFileReference; lastKnownFileType = text; path = R.swift.gyb; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		65372FFD276D0B0500919088 /* en */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		657365222760D553008ADAA5 /* R.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -66,6 +68,7 @@
 				65019A232760C725006196F0 /* ViewController.swift */,
 				65019A252760C725006196F0 /* Main.storyboard */,
 				65019A282760C726006196F0 /* Assets.xcassets */,
+				65372FFE276D0B0500919088 /* Localizable.strings */,
 				65019A2A2760C726006196F0 /* LaunchScreen.storyboard */,
 				65019A2D2760C726006196F0 /* Info.plist */,
 			);
@@ -132,6 +135,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				65019A2C2760C726006196F0 /* LaunchScreen.storyboard in Resources */,
+				65372FFC276D0B0500919088 /* Localizable.strings in Resources */,
 				65019A292760C726006196F0 /* Assets.xcassets in Resources */,
 				65019A272760C725006196F0 /* Main.storyboard in Resources */,
 			);
@@ -157,7 +161,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "python3 $PROJECT_DIR/gyb_resources/gyb_script.py\n\n";
+			shellScript = "cd $PROJECT_DIR/gyb_resources_all\n./generate_resources.sh\n\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -190,6 +194,14 @@
 				65019A2B2760C726006196F0 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		65372FFE276D0B0500919088 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				65372FFD276D0B0500919088 /* en */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

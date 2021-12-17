@@ -15,6 +15,8 @@ class ViewController: UIViewController {
 	@IBOutlet weak var imageView4: UIImageView!
 	@IBOutlet weak var view1: UIView!
 	@IBOutlet weak var view2: UIView!
+	@IBOutlet weak var label1: UILabel!
+	@IBOutlet weak var label2: UILabel!
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -23,13 +25,14 @@ class ViewController: UIViewController {
 		imageView2.image = R.Image.someImages_i_codeCopy
 		imageView3.image = R.Image.someImages_kickstarter2
 		imageView4.image = R.Image.kickstarterEdiary
-		
+
 		view1.backgroundColor = R.Color.accentColor
 		view2.backgroundColor = R.Color.someImages_color
-		
+
 		R.checkResources()
+
+		label1.text = R.String.resourcesTest_accessibility_addImage
+		label2.text = R.String.resourcesTest_sendEmail_emailBody
 	}
-
-
 }
 

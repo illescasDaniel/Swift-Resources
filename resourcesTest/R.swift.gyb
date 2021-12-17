@@ -8,6 +8,7 @@
 %{
 from gyb_resources import image_resources
 from gyb_resources import color_resources
+from gyb_resources import string_resources
 }%
 
 import UIKit
@@ -19,11 +20,11 @@ enum R {
 		r_image_resources = image_resources()
 		}%
 		% for resource in r_image_resources:
-		static var ${resource.variableName}: UIImage { UIImage(named: "${resource.name}")! }
+		static var ${resource.variable_name}: UIImage { UIImage(named: "${resource.name}")! }
 		% end
 		static var all: [UIImage] {[
 		% for resource in r_image_resources:
-			${resource.variableName},
+			${resource.variable_name},
 		% end
 		]}
 	}
@@ -33,23 +34,41 @@ enum R {
 		r_color_resources = color_resources()
 		}%
 		% for resource in r_color_resources:
-		static var ${resource.variableName}: UIColor { UIColor(named: "${resource.name}")! }
+		static var ${resource.variable_name}: UIColor { UIColor(named: "${resource.name}")! }
 		% end
 		static var all: [UIColor] {[
 		% for resource in r_color_resources:
-			${resource.variableName},
+			${resource.variable_name},
 		% end
 		]}
 	}
 
-	static var all: [Any] {[
-	% for resource in r_image_resources:
-		R.Image.${resource.variableName},
-	% end
-	% for resource in r_color_resources:
-		R.Color.${resource.variableName},
-	% end
-	]}
+	enum String {
+		%{
+		r_string_resources = string_resources("en.lproj/Localizable.strings")
+		}%
+		% for resource in r_string_resources:
+		/// ${resource.comments}
+		static var ${resource.variable_name}: Swift.String {
+			NSLocalizedString(
+				"${resource.key}",
+				tableName: "Localizable",
+				bundle: .main,
+				value: "${resource.value}",
+				comment: "${resource.comments}"
+			)
+		}
+		% end
+		static var all: [Swift.String] {[
+		% for resource in r_string_resources:
+			${resource.variable_name},
+		% end
+		]}
+	}
+
+	static var all: [Any] {
+		R.Image.all + R.Color.all + R.String.all
+	}
 
 	static func checkResources(shouldPrint: Bool = true) {
 		R.all.forEach { resource in
