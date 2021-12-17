@@ -157,7 +157,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "python3 $PROJECT_DIR/gyb_script.py\n\n";
+			shellScript = "python3 $PROJECT_DIR/gyb_resources/gyb_script.py\n\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

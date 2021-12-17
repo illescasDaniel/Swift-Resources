@@ -58,14 +58,16 @@ enum R {
 
 ## 2/3 Tutorial using the example project
 
-1. Put `gyb.py` in the root folder of the project, the structure should be:
+1. Put `gyb.py` inside the `gyb_resources` folder of the project, the structure should be:
 ```
+├── LICENSE
 ├── README.md
-├── __init__.py         # necessay file to easily use gyb_resources.py
-├── gyb.py              # apple's gyb
-├── gyb_resources.py    # python script to generate code
-├── gyb_script.py       # script for Xcode
-├── resourcesTest       # project folder name
+├── gyb_resources         # all files necessary for what we want
+│   ├── __init__.py       # necessay file to easily use gyb_resources.py
+│   ├── gyb.py            # apple's gyb
+│   ├── gyb_resources.py  # python script to generate code
+│   └── gyb_script.py     # script for Xcode
+├── resourcesTest         # project folder name
 ```
 
 2. Build and run the project. 
@@ -85,21 +87,22 @@ view1.backgroundColor = R.Color.accentColor
 
 ## 3/3 Tutorial for your project
 
-1. You need to copy these files to the root folder of your project:
+1. You need to copy the `gyb_resources` folder to the root folder of your project:
 ```
-├── __init__.py
-├── gyb.py
-├── gyb_resources.py
-├── gyb_script.py
+├── gyb_resources
+│   ├── __init__.py
+│   ├── gyb.py
+│   ├── gyb_resources.py
+│   └── gyb_script.py
 ```
 
 2. Change the variable `project_name` inside `gyb_script.py` to your project folder name.
-3. Copy `R.swift.gyb` where you want `R.swift` to be generated. `R.swift.gyb` should **NOT** be added to your current target, so it should **not** be compiled (`Compile sources`) **nor** copied to the app bundle resources (`Copy bundle resources`).
+3. Copy `R.swift.gyb` where you want `R.swift` to be generated. `R.swift.gyb` should **NOT** be added to your current target, so it should **not** be compiled (`Compile sources`) **or** copied to the app bundle resources (`Copy bundle resources`).
 4. You must create a new `Run Script Phase` in the `Build Phases` tab and these are its settings:
 Shell: `/bin/sh`
 Script content: 
 ```shell
-python3 $PROJECT_DIR/gyb_script.py
+python3 $PROJECT_DIR/gyb_resources/gyb_script.py
 ```
 Run script: uncheck "for install builds only" and "based on dependendy analysis"
 
