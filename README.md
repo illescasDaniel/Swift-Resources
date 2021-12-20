@@ -139,7 +139,7 @@ Run script: uncheck "for install builds only" and "based on dependendy analysis"
 - Nested folders work BUT only if all nested folders use the same setting for "provides namespace".
 - **.strings files should have UTF-8 encoding**, convert your Localizable.strings with `iconv -f UTF-16LE -t UTF-8 Localizable.strings > Localizable2.strings`. If you need to use `UTF-16` change the encoder parameter in the file `gyb_resources_strings.py` in `with open(strings_path, encoding='utf-8') as f:` from `utf-8` to `utf-16` or other.
 - The script respects the "provides namespace" option and works fine when you mark a folder with that option.
-- If your `Assets.xcassets` is named differently, just modify `R.swift.gyb` adding the folder name in the function calls `image_resources("myAssets.xcassets")` and `color_resources("myAssets.xcassets")`
+- If your `Assets.xcassets` is named differently or located in other folder different than the root folder, just modify `R.swift.gyb` adding the folder path in the function calls `image_resources("myAssets.xcassets")` and `color_resources("myAssets.xcassets")`. You can do the same with the strings resources function.
 - You can use `R.checkResources()` to **verify all your assets at runtime**. This is recommended to call when running your app in **debug** mode. IF YOU ENCOUNTER AN ERROR RUNNING IT, create an issue because maybe some assets weren't added properly.
 
 ## TODO (maybe)
