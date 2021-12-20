@@ -48,7 +48,7 @@ enum R {
 		r_string_resources = string_resources("en.lproj/Localizable.strings")
 		}%
 		% for resource in r_string_resources:
-		/// ${resource.comments}
+		${f"/// {resource.comments}" if resource.comments else ""}
 		static var ${resource.variable_name}: Swift.String {
 			NSLocalizedString(
 				"${resource.key}",

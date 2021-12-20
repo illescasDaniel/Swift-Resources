@@ -83,7 +83,7 @@ enum R {
 				comment: "App Settings App section title"
 			)
 		}
-		/// 
+		
 		static var `resourcesTest_appSettings_testNoComments`: Swift.String {
 			NSLocalizedString(
 				"ResourcesTest.AppSettings.testNoComments",
@@ -93,7 +93,7 @@ enum R {
 				comment: ""
 			)
 		}
-		/// 
+		
 		static var `resourcesTest_appSettings_test_no_camel_case`: Swift.String {
 			NSLocalizedString(
 				"ResourcesTest.AppSettings.test_no_camel_case",
@@ -103,7 +103,7 @@ enum R {
 				comment: ""
 			)
 		}
-		/// 
+		
 		static var `resourcesTest_appSettings_test_no_camel_case_2`: Swift.String {
 			NSLocalizedString(
 				"ResourcesTest.AppSettings.test_no_camel_case_2",
@@ -113,7 +113,7 @@ enum R {
 				comment: ""
 			)
 		}
-		/// 
+		
 		static var `ten_resourcesTest_appSettings_number`: Swift.String {
 			NSLocalizedString(
 				"10_ResourcesTest.AppSettings.number",
