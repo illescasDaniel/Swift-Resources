@@ -126,7 +126,10 @@ Run script: uncheck "for install builds only" and "based on dependendy analysis"
 - ...
 ```
 
-6. You should be able to compile your project. After this a new file named `R.swift` should be generated alongside `R.swift.gyb`, drag `R.swift` to the project adding it to the proper target/s. `R.swift` should be treated as any other swift file (it should be compiled) BUT you should not modify it manually, since that file will change depending on your assets.
+6. Make sure that the `.strings` file encoding matches the encoding specified in `gyb_resources_all/gyb_resources_strings.py`. To be sure convert your localizable strings file to `UTF-8` with `iconv -f UTF-16LE -t UTF-8 Localizable.strings > Localizable2.strings` then delete `Localizable.strings` and rename `Localizable2.strings` to `Localizable.strings`. Then make sure the encoding is set to `UTF-8` inside Xcode too. 
+**Note:** If you need to have `UTF-16` strings just make sure the strings file is on that encoding and also change this line in `gyb_resources_strings.py`: `with open(strings_path, encoding='utf-8') as f:` replacing `utf-8` for the desired encoding.
+
+7. You should be able to compile your project. After this a new file named `R.swift` should be generated alongside `R.swift.gyb`, drag `R.swift` to the project adding it to the proper target/s. `R.swift` should be treated as any other swift file (it should be compiled) BUT you should not modify it manually, since that file will change depending on your assets.
 
 ## Notes
 - The file that will generate the structure for your assets is `R.swift.gyb`, you can customize it if you like.

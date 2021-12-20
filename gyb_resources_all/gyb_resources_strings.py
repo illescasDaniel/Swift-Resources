@@ -33,7 +33,7 @@ def _clean_string_key(name):
 	return f'`{numbers_replaced}`'
 
 def _string_resources(strings_path: str):
-	with open(strings_path, encoding='utf-16') as f:
+	with open(strings_path, encoding='utf-8') as f:
 		strings_file_content = f.read()
 		string_resources = _parse_strings_file_content(strings_file_content)
 		return string_resources
