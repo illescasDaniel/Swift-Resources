@@ -14,10 +14,10 @@ class Resource:
 		self.variable_name = variable_name
 
 def image_resources(parent_directory = _assets_folder_name):
-	return _resources(parent_directory, _DirType.IMAGE)
+	return _resources(parent_directory, _DirType.IMAGE, parent_directory)
 		
 def color_resources(parent_directory = _assets_folder_name):
-	return _resources(parent_directory, _DirType.COLOR)
+	return _resources(parent_directory, _DirType.COLOR, parent_directory)
 
 # Private:
 
@@ -43,7 +43,7 @@ class _DirType:
     IMAGE = "image"
     COLOR = "color"
 
-def _resources(parent_directory, type):
+def _resources(parent_directory, type, original_parent_directory):
 
 	if type != _DirType.IMAGE and type != _DirType.COLOR:
 		raise Exception(f"Invalid type {type}")
@@ -70,12 +70,13 @@ def _resources(parent_directory, type):
 				resources.append(Resource(resource_folder_name_without_suffix, _clean_asset_name(resource_folder_name_without_suffix)))
 			else:
 				resource_name = resource_folder_name_without_suffix
-				full_resource_name = _resource_name_without_suffix(full_file_path, resource_folder_suffix)[len(f"{_assets_folder_name}/"):]
+				full_resource_name = _resource_name_without_suffix(full_file_path, resource_folder_suffix)[len(f"{original_parent_directory}/"):]
 				preserve_namespace = _should_preserve_namespace(os.path.join(parent_directory, contents_json_file_name))
+
 				if preserve_namespace:
 					resource_name = full_resource_name
 				resources.append(Resource(resource_name, _clean_asset_name(full_resource_name)))
 		elif os.path.isdir(full_file_path) and not(file_path.endswith(image_folder_suffix)) and not(file_path.endswith(color_folder_suffix)) and not(file_path.endswith(app_icon_folder_suffix)):
-			for extra_file in _resources(full_file_path, type):
+			for extra_file in _resources(full_file_path, type, original_parent_directory):
 				resources.append(extra_file)
 	return resources
